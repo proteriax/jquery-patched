@@ -1,0 +1,13 @@
+diff --git a/node_modules/@types/jquery/JQuery.d.ts b/node_modules/@types/jquery/JQuery.d.ts
+index 1d317a9..0998c20 100644
+--- a/node_modules/@types/jquery/JQuery.d.ts
++++ b/node_modules/@types/jquery/JQuery.d.ts
+@@ -1108,7 +1108,7 @@ $( "img" ).attr( "src", function() {
+ ```
+      */
+     attr(attributeName: string,
+-         value_function: string | number | null | ((this: TElement, index: number, attr: string) => string | number | void | undefined)): this;
++         value_function: string | number | null | ((this: TElement, attr: string, node: TElement, index: number) => string | number | void | undefined)): this;
+     /**
+      * Set one or more attributes for the set of matched elements.
+      * @param attributes An object of attribute-value pairs to set.

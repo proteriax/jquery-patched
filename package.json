@@ -1,0 +1,17 @@
+{
+  "name": "jquery-patched",
+  "version": "1.0.0",
+  "main": "jquery.js",
+  "types": "types/index.d.ts",
+  "repository": "git@github.com:proteriax/jquery-patched.git",
+  "author": "proteriax <8125011+proteriax@users.noreply.github.com>",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "patch-package && cp node_modules/jquery/dist/jquery.js ./ && cp -r node_modules/@types/jquery ./types"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.3.35",
+    "jquery": "^3.5.0",
+    "patch-package": "^6.2.2"
+  }
+}
