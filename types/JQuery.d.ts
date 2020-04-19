@@ -418,7 +418,7 @@ $( "div" ).addClass(function( index, currentClass ) {
 </html>
 ```
      */
-    addClass(className_function: JQuery.TypeOrArray<string> | ((this: TElement, index: number, currentClassName: string) => string)): this;
+    addClass(className_function: JQuery.TypeOrArray<string> | ((this: TElement, currentClassName: string, node: TElement, index: number) => string)): this;
     /**
      * Insert content, specified by the parameter, after each element in the set of matched elements.
      * @param contents One or more additional DOM elements, text nodes, arrays of elements and text nodes, HTML strings, or
@@ -518,7 +518,7 @@ $( "p" ).after( $( "b" ) );
      * @since 1.4
      * @since 1.10
      */
-    after(function_functionｰhtml: (this: TElement, index: number, html: string) => JQuery.htmlString | JQuery.TypeOrArray<JQuery.Node | JQuery<JQuery.Node>>): this;
+    after(function_functionｰhtml: (this: TElement, html: string, node: TElement, index: number) => JQuery.htmlString | JQuery.TypeOrArray<JQuery.Node | JQuery<JQuery.Node>>): this;
     /**
      * Register a handler to be called when Ajax requests complete. This is an AjaxEvent.
      * @param handler The function to be invoked.
@@ -580,7 +580,7 @@ $( document ).ajaxStart(function() {
 });
 ```
      */
-    ajaxStart(handler: (this: Document) => void | false): this;
+    ajaxStart(handler: (this: Document, document: Document) => void | false): this;
     /**
      * Register a handler to be called when all Ajax requests have completed. This is an Ajax Event.
      * @param handler The function to be invoked.
@@ -593,7 +593,7 @@ $( document ).ajaxStop(function() {
 });
 ```
      */
-    ajaxStop(handler: (this: Document) => void | false): this;
+    ajaxStop(handler: (this: Document, document: Document) => void | false): this;
     /**
      * Attach a function to be executed whenever an Ajax request completes successfully. This is an Ajax Event.
      * @param handler The function to be invoked.
@@ -639,7 +639,7 @@ $( "p" ).animate({
     animate(properties: JQuery.PlainObject,
             duration: JQuery.Duration,
             easing: string,
-            complete?: (this: TElement) => void): this;
+            complete?: (this: TElement, node: TElement) => void): this;
     /**
      * Perform a custom animation of a set of CSS properties.
      * @param properties An object of CSS properties and values that the animation will move toward.
@@ -743,7 +743,7 @@ $( "p" ).animate({
      */
     animate(properties: JQuery.PlainObject,
             duration_easing: JQuery.Duration | string,
-            complete?: (this: TElement) => void): this;
+            complete?: (this: TElement, node: TElement) => void): this;
     /**
      * Perform a custom animation of a set of CSS properties.
      * @param properties An object of CSS properties and values that the animation will move toward.
@@ -904,7 +904,7 @@ $( "p" ).animate({
      * @since 1.0
      */
     animate(properties: JQuery.PlainObject,
-            complete?: (this: TElement) => void): this;
+            complete?: (this: TElement, node: TElement) => void): this;
     /**
      * Insert content, specified by the parameter, to the end of each element in the set of matched elements.
      * @param contents One or more additional DOM elements, text nodes, arrays of elements and text nodes, HTML strings, or
@@ -1328,7 +1328,7 @@ $( "p" ).before( $( "b" ) );
      * @since 1.4
      * @since 1.10
      */
-    before(function_functionｰhtml: (this: TElement, index: number, html: string) => JQuery.htmlString | JQuery.TypeOrArray<JQuery.Node | JQuery<JQuery.Node>>): this;
+    before(function_functionｰhtml: (this: TElement, html: string, node: TElement, index: number) => JQuery.htmlString | JQuery.TypeOrArray<JQuery.Node | JQuery<JQuery.Node>>): this;
     // [bind() overloads] https://github.com/jquery/api.jquery.com/issues/1048
     /**
      * Attach a handler to an event for the elements.
@@ -2273,7 +2273,7 @@ $( "span" ).on( "click", function() {
 ```
      */
     css(propertyName: string,
-        value_function: string | number | ((this: TElement, index: number, value: string) => string | number | void | undefined)): this;
+        value_function: string | number | ((this: TElement, value: string, node: TElement, index: number) => string | number | void | undefined)): this;
     /**
      * Set one or more CSS properties for the set of matched elements.
      * @param properties An object of property-value pairs to set.
@@ -2356,7 +2356,7 @@ $( "div" ).on( "click", function() {
 </html>
 ```
      */
-    css(properties: JQuery.PlainObject<string | number | ((this: TElement, index: number, value: string) => string | number | void | undefined)>): this;
+    css(properties: JQuery.PlainObject<string | number | ((this: TElement, value: string, node: TElement, index: number) => string | number | void | undefined)>): this;
     /**
      * Get the computed style properties for the first element in the set of matched elements.
      * @param propertyName A CSS property.
@@ -3119,7 +3119,7 @@ $( "button" ).click(function() {
 </html>
 ```
      */
-    each(funсtion: (this: TElement, index: number, element: TElement) => void | false): this;
+    each(funсtion: (this: TElement, element: TElement, index: number) => void | false): this;
     /**
      * Remove all child nodes of the set of matched elements from the DOM.
      * @see \`{@link https://api.jquery.com/empty/ }\`
@@ -3365,7 +3365,7 @@ $( "input[type='checkbox']" ).check();
      * @see \`{@link https://api.jquery.com/fadeIn/ }\`
      * @since 1.4.3
      */
-    fadeIn(duration: JQuery.Duration, easing: string, complete?: (this: TElement) => void): this;
+    fadeIn(duration: JQuery.Duration, easing: string, complete?: (this: TElement, node: TElement) => void): this;
     /**
      * Display the matched elements by fading them to opaque.
      * @param duration_easing _&#x40;param_ `duration_easing`
@@ -3431,7 +3431,7 @@ $( "a" ).click(function() {
 </html>
 ```
      */
-    fadeIn(duration_easing: JQuery.Duration | string, complete: (this: TElement) => void): this;
+    fadeIn(duration_easing: JQuery.Duration | string, complete: (this: TElement, node: TElement) => void): this;
     /**
      * Display the matched elements by fading them to opaque.
      * @param duration_easing_complete_options _&#x40;param_ `duration_easing_complete_options`
@@ -3491,7 +3491,7 @@ $( document.body ).click(function() {
 </html>
 ```
      */
-    fadeIn(duration_easing_complete_options?: JQuery.Duration | string | ((this: TElement) => void) | JQuery.EffectsOptions<TElement>): this;
+    fadeIn(duration_easing_complete_options?: JQuery.Duration | string | ((this: TElement, node: TElement) => void) | JQuery.EffectsOptions<TElement>): this;
     /**
      * Hide the matched elements by fading them to transparent.
      * @param duration A string or number determining how long the animation will run.
@@ -3552,7 +3552,7 @@ $( "#btn2" ).click(function() {
 </html>
 ```
      */
-    fadeOut(duration: JQuery.Duration, easing: string, complete?: (this: TElement) => void): this;
+    fadeOut(duration: JQuery.Duration, easing: string, complete?: (this: TElement, node: TElement) => void): this;
     /**
      * Hide the matched elements by fading them to transparent.
      * @param duration_easing _&#x40;param_ `duration_easing`
@@ -3612,7 +3612,7 @@ $( "span" ).hover(function() {
 </html>
 ```
      */
-    fadeOut(duration_easing: JQuery.Duration | string, complete: (this: TElement) => void): this;
+    fadeOut(duration_easing: JQuery.Duration | string, complete: (this: TElement, node: TElement) => void): this;
     /**
      * Hide the matched elements by fading them to transparent.
      * @param duration_easing_complete_options _&#x40;param_ `duration_easing_complete_options`
@@ -3656,7 +3656,7 @@ $( "p" ).click(function() {
 </html>
 ```
      */
-    fadeOut(duration_easing_complete_options?: JQuery.Duration | string | ((this: TElement) => void) | JQuery.EffectsOptions<TElement>): this;
+    fadeOut(duration_easing_complete_options?: JQuery.Duration | string | ((this: TElement, node: TElement) => void) | JQuery.EffectsOptions<TElement>): this;
     /**
      * Adjust the opacity of the matched elements.
      * @param duration A string or number determining how long the animation will run.
@@ -3666,7 +3666,7 @@ $( "p" ).click(function() {
      * @see \`{@link https://api.jquery.com/fadeTo/ }\`
      * @since 1.4.3
      */
-    fadeTo(duration: JQuery.Duration, opacity: number, easing: string, complete?: (this: TElement) => void): this;
+    fadeTo(duration: JQuery.Duration, opacity: number, easing: string, complete?: (this: TElement, node: TElement) => void): this;
     /**
      * Adjust the opacity of the matched elements.
      * @param duration A string or number determining how long the animation will run.
@@ -3823,7 +3823,7 @@ $( "div" )
 </html>
 ```
      */
-    fadeTo(duration: JQuery.Duration, opacity: number, complete?: (this: TElement) => void): this;
+    fadeTo(duration: JQuery.Duration, opacity: number, complete?: (this: TElement, node: TElement) => void): this;
     /**
      * Display or hide the matched elements by animating their opacity.
      * @param duration A string or number determining how long the animation will run.
@@ -3863,7 +3863,7 @@ $( "button:last" ).click(function() {
 </html>
 ```
      */
-    fadeToggle(duration: JQuery.Duration, easing: string, complete?: (this: TElement) => void): this;
+    fadeToggle(duration: JQuery.Duration, easing: string, complete?: (this: TElement, node: TElement) => void): this;
     /**
      * Display or hide the matched elements by animating their opacity.
      * @param duration_easing _&#x40;param_ `duration_easing`
@@ -3906,7 +3906,7 @@ $( "button:last" ).click(function() {
 </html>
 ```
      */
-    fadeToggle(duration_easing: JQuery.Duration | string, complete: (this: TElement) => void): this;
+    fadeToggle(duration_easing: JQuery.Duration | string, complete: (this: TElement, node: TElement) => void): this;
     /**
      * Display or hide the matched elements by animating their opacity.
      * @param duration_easing_complete_options _&#x40;param_ `duration_easing_complete_options`
@@ -3919,7 +3919,7 @@ $( "button:last" ).click(function() {
      * @since 1.0
      * @since 1.4.3
      */
-    fadeToggle(duration_easing_complete_options?: JQuery.Duration | string | ((this: TElement) => void) | JQuery.EffectsOptions<TElement>): this;
+    fadeToggle(duration_easing_complete_options?: JQuery.Duration | string | ((this: TElement, node: TElement) => void) | JQuery.EffectsOptions<TElement>): this;
     /**
      * Reduce the set of matched elements to those that match the selector or pass the function's test.
      * @param selector_elements_selection_function _&#x40;param_ `selector_elements_selection_function`
@@ -4020,7 +4020,7 @@ $( "div" ).filter( $( "#unique" ) );
         JQuery.Selector |
         JQuery.TypeOrArray<Element> |
         JQuery |
-        ((this: TElement, index: number, element: TElement) => boolean)
+        ((this: TElement, element: TElement, index: number) => boolean)
     ): this;
     /**
      * Get the descendants of each element in the current set of matched elements, filtered by a selector, jQuery object, or element.
@@ -4700,7 +4700,7 @@ $( "div" ).one( "click", function() {
 </html>
 ```
      */
-    height(value_function: string | number | ((this: TElement, index: number, height: number) => string | number)): this;
+    height(value_function: string | number | ((this: TElement, height: number, node: TElement, index: number) => string | number)): this;
     /**
      * Get the current computed height for the first element in the set of matched elements.
      * @see \`{@link https://api.jquery.com/height/ }\`
@@ -4770,7 +4770,7 @@ $( "#getw" ).click(function() {
      * @see \`{@link https://api.jquery.com/hide/ }\`
      * @since 1.4.3
      */
-    hide(duration: JQuery.Duration, easing: string, complete: (this: TElement) => void): this;
+    hide(duration: JQuery.Duration, easing: string, complete: (this: TElement, node: TElement) => void): this;
     /**
      * Hide the matched elements.
      * @param duration A string or number determining how long the animation will run.
@@ -4859,7 +4859,7 @@ $( "div" ).click(function() {
 </html>
 ```
      */
-    hide(duration: JQuery.Duration, easing_complete: string | ((this: TElement) => void)): this;
+    hide(duration: JQuery.Duration, easing_complete: string | ((this: TElement, node: TElement) => void)): this;
     /**
      * Hide the matched elements.
      * @param duration_complete_options _&#x40;param_ `duration_complete_options`
@@ -4926,7 +4926,7 @@ $( "button" ).click(function() {
 </html>
 ```
      */
-    hide(duration_complete_options?: JQuery.Duration | ((this: TElement) => void) | JQuery.EffectsOptions<TElement>): this;
+    hide(duration_complete_options?: JQuery.Duration | ((this: TElement, node: TElement) => void) | JQuery.EffectsOptions<TElement>): this;
     /**
      * Bind two handlers to the matched elements, to be executed when the mouse pointer enters and leaves the elements.
      * @param handlerIn A function to execute when the mouse pointer enters the element.
@@ -5146,7 +5146,7 @@ $( "div b" )
      */
     html(htmlString_function: JQuery.htmlString |
                               JQuery.Node |
-                              ((this: TElement, index: number, oldhtml: JQuery.htmlString) => JQuery.htmlString | JQuery.Node)): this;
+                              ((this: TElement, oldhtml: JQuery.htmlString, node: TElement, index: number) => JQuery.htmlString | JQuery.Node)): this;
     /**
      * Get the HTML contents of the first element in the set of matched elements.
      * @see \`{@link https://api.jquery.com/html/ }\`
@@ -5459,7 +5459,7 @@ $( "div" ).one( "click", function() {
 </html>
 ```
      */
-    innerHeight(value_function: string | number | ((this: TElement, index: number, height: number) => string | number)): this;
+    innerHeight(value_function: string | number | ((this: TElement, height: number, node: TElement, index: number) => string | number)): this;
     /**
      * Get the current computed height for the first element in the set of matched elements, including padding but not border.
      * @see \`{@link https://api.jquery.com/innerHeight/ }\`
@@ -5550,7 +5550,7 @@ modWidth -= 8;
 </html>
 ```
      */
-    innerWidth(value_function: string | number | ((this: TElement, index: number, width: number) => string | number)): this;
+    innerWidth(value_function: string | number | ((this: TElement, width: number, node: TElement, index: number) => string | number)): this;
     /**
      * Get the current computed inner width for the first element in the set of matched elements, including padding but not border.
      * @see \`{@link https://api.jquery.com/innerWidth/ }\`
@@ -5873,7 +5873,7 @@ $( "li" ).click(function() {
 </html>
 ```
      */
-    is(selector_function_selection_elements: JQuery.Selector | JQuery.TypeOrArray<Element> | JQuery | ((this: TElement, index: number, element: TElement) => boolean)): boolean;
+    is(selector_function_selection_elements: JQuery.Selector | JQuery.TypeOrArray<Element> | JQuery | ((this: TElement, element: TElement, index: number) => boolean)): boolean;
     /**
      * Bind an event handler to the "keydown" JavaScript event, or trigger that event on an element.
      * @param eventData An object containing data that will be passed to the event handler.
@@ -6410,7 +6410,7 @@ $( "input" ).click(function() {
 </html>
 ```
      */
-    map<TReturn>(callback: (this: TElement, index: number, domElement: TElement) => JQuery.TypeOrArray<TReturn> | null | undefined): JQuery<TReturn>;
+    map<TReturn>(callback: (this: TElement, domElement: TElement, index: number) => JQuery.TypeOrArray<TReturn> | null | undefined): JQuery<TReturn>;
     /**
      * Bind an event handler to the "mousedown" JavaScript event, or trigger that event on an element.
      * @param eventData An object containing data that will be passed to the event handler.
@@ -7241,7 +7241,7 @@ $( "p" ).not( "#selected" );
 $( "p" ).not( $( "div p.selected" ) );
 ```
      */
-    not(selector_function_selection: JQuery.Selector | JQuery.TypeOrArray<Element> | JQuery | ((this: TElement, index: number, element: TElement) => boolean)): this;
+    not(selector_function_selection: JQuery.Selector | JQuery.TypeOrArray<Element> | JQuery | ((this: TElement, element: TElement, index: number) => boolean)): this;
     /**
      * Remove an event handler.
      * @param events One or more space-separated event types and optional namespaces, or just namespaces, such as
@@ -7408,7 +7408,7 @@ $( "p:last" ).offset({ top: 10, left: 30 });
 </html>
 ```
      */
-    offset(coordinates_function: JQuery.CoordinatesPartial | ((this: TElement, index: number, coords: JQuery.Coordinates) => JQuery.CoordinatesPartial)): this;
+    offset(coordinates_function: JQuery.CoordinatesPartial | ((this: TElement, coords: JQuery.Coordinates, node: TElement, index: number) => JQuery.CoordinatesPartial)): this;
     /**
      * Get the current coordinates of the first element in the set of matched elements, relative to the document.
      * @see \`{@link https://api.jquery.com/offset/ }\`
@@ -8307,7 +8307,7 @@ $( "div" ).one( "click", function() {
 </html>
 ```
      */
-    outerHeight(value_function: string | number | ((this: TElement, index: number, height: number) => string | number),
+    outerHeight(value_function: string | number | ((this: TElement, height: number, node: TElement, index: number) => string | number),
                 includeMargin?: boolean): this;
     /**
      * Get the current computed outer height (including padding, border, and optionally margin) for the first element in the set of matched elements.
@@ -8401,7 +8401,7 @@ $( "div" ).one( "click", function() {
 </html>
 ```
      */
-    outerWidth(value_function: string | number | ((this: TElement, index: number, width: number) => string | number),
+    outerWidth(value_function: string | number | ((this: TElement, width: number, node: TElement, index: number) => string | number),
                includeMargin?: boolean): this;
     /**
      * Get the current computed outer width (including padding, border, and optionally margin) for the first element in the set of matched elements.
@@ -8814,7 +8814,7 @@ $( "p" ).prepend( $( "b" ) );
      * @see \`{@link https://api.jquery.com/prepend/ }\`
      * @since 1.4
      */
-    prepend(funсtion: (this: TElement, index: number, html: string) => JQuery.htmlString | JQuery.TypeOrArray<JQuery.Node | JQuery<JQuery.Node>>): this;
+    prepend(funсtion: (this: TElement, html: string, node: TElement, index: number) => JQuery.htmlString | JQuery.TypeOrArray<JQuery.Node | JQuery<JQuery.Node>>): this;
     /**
      * Insert every element in the set of matched elements to the beginning of the target.
      * @param target A selector, element, HTML string, array of elements, or jQuery object; the matched set of elements
@@ -9157,7 +9157,7 @@ $( "button" ).on( "click", function() {
      * @since 1.6
      */
     prop(propertyName: string,
-         value_function: string | number | boolean | symbol | object | null | undefined | ((this: TElement, index: number, oldPropertyValue: any) => any)): this;
+         value_function: string | number | boolean | symbol | object | null | undefined | ((this: TElement, oldPropertyValue: any, node: TElement, index: number) => any)): this;
     /**
      * Set one or more properties for the set of matched elements.
      * @param properties An object of property-value pairs to set.
@@ -9727,7 +9727,7 @@ $( "p:eq(1)" ).removeClass();
 </html>
 ```
      */
-    removeClass(className_function?: JQuery.TypeOrArray<string> | ((this: TElement, index: number, className: string) => string)): this;
+    removeClass(className_function?: JQuery.TypeOrArray<string> | ((this: TElement, className: string, node: TElement, index: number) => string)): this;
     /**
      * Remove a previously-stored piece of data.
      * @param name A string naming the piece of data to delete.
@@ -9999,7 +9999,7 @@ $( "button" ).on( "click", function() {
                                      JQuery<JQuery.Node> |
                                      JQuery.TypeOrArray<Element> |
                                      JQuery.Node |
-                                     ((this: TElement, index: number, oldhtml: JQuery.htmlString) => JQuery.htmlString |
+                                     ((this: TElement, oldhtml: JQuery.htmlString, node: TElement, index: number) => JQuery.htmlString |
                                                                                                      JQuery<JQuery.Node> |
                                                                                                      JQuery.TypeOrArray<Element> |
                                                                                                      JQuery.Node)): this;
@@ -10478,7 +10478,7 @@ $( "input" ).select();
      * @see \`{@link https://api.jquery.com/show/ }\`
      * @since 1.4.3
      */
-    show(duration: JQuery.Duration, easing: string, complete: (this: TElement) => void): this;
+    show(duration: JQuery.Duration, easing: string, complete: (this: TElement, node: TElement) => void): this;
     /**
      * Display the matched elements.
      * @param duration A string or number determining how long the animation will run.
@@ -10588,7 +10588,7 @@ $( "form" ).submit(function( event ) {
 </html>
 ```
      */
-    show(duration: JQuery.Duration, easing_complete: string | ((this: TElement) => void)): this;
+    show(duration: JQuery.Duration, easing_complete: string | ((this: TElement, node: TElement) => void)): this;
     /**
      * Display the matched elements.
      * @param duration_complete_options _&#x40;param_ `duration_complete_options`
@@ -10627,7 +10627,7 @@ $( "button" ).click(function() {
 </html>
 ```
      */
-    show(duration_complete_options?: JQuery.Duration | ((this: TElement) => void) | JQuery.EffectsOptions<TElement>): this;
+    show(duration_complete_options?: JQuery.Duration | ((this: TElement, node: TElement) => void) | JQuery.EffectsOptions<TElement>): this;
     /**
      * Get the siblings of each element in the set of matched elements, optionally filtered by a selector.
      * @param selector A string containing a selector expression to match elements against.
@@ -10821,7 +10821,7 @@ $( "p" ).slice( -1 ).wrapInner( "<b></b>" );
      * @see \`{@link https://api.jquery.com/slideDown/ }\`
      * @since 1.4.3
      */
-    slideDown(duration: JQuery.Duration, easing: string, complete?: (this: TElement) => void): this;
+    slideDown(duration: JQuery.Duration, easing: string, complete?: (this: TElement, node: TElement) => void): this;
     /**
      * Display the matched elements with a sliding motion.
      * @param duration_easing _&#x40;param_ `duration_easing`
@@ -10888,7 +10888,7 @@ $( "div" ).click(function() {
 </html>
 ```
      */
-    slideDown(duration_easing: JQuery.Duration | string, complete: (this: TElement) => void): this;
+    slideDown(duration_easing: JQuery.Duration | string, complete: (this: TElement, node: TElement) => void): this;
     /**
      * Display the matched elements with a sliding motion.
      * @param duration_easing_complete_options _&#x40;param_ `duration_easing_complete_options`
@@ -10940,7 +10940,7 @@ $( document.body ).click(function () {
 </html>
 ```
      */
-    slideDown(duration_easing_complete_options?: JQuery.Duration | string | ((this: TElement) => void) | JQuery.EffectsOptions<TElement>): this;
+    slideDown(duration_easing_complete_options?: JQuery.Duration | string | ((this: TElement, node: TElement) => void) | JQuery.EffectsOptions<TElement>): this;
     /**
      * Display or hide the matched elements with a sliding motion.
      * @param duration A string or number determining how long the animation will run.
@@ -10949,7 +10949,7 @@ $( document.body ).click(function () {
      * @see \`{@link https://api.jquery.com/slideToggle/ }\`
      * @since 1.4.3
      */
-    slideToggle(duration: JQuery.Duration, easing: string, complete?: (this: TElement) => void): this;
+    slideToggle(duration: JQuery.Duration, easing: string, complete?: (this: TElement, node: TElement) => void): this;
     /**
      * Display or hide the matched elements with a sliding motion.
      * @param duration_easing _&#x40;param_ `duration_easing`
@@ -11019,7 +11019,7 @@ $( "#aa" ).click(function() {
 </html>
 ```
      */
-    slideToggle(duration_easing: JQuery.Duration | string, complete: (this: TElement) => void): this;
+    slideToggle(duration_easing: JQuery.Duration | string, complete: (this: TElement, node: TElement) => void): this;
     /**
      * Display or hide the matched elements with a sliding motion.
      * @param duration_easing_complete_options _&#x40;param_ `duration_easing_complete_options`
@@ -11064,7 +11064,7 @@ $( "button" ).click(function() {
 </html>
 ```
      */
-    slideToggle(duration_easing_complete_options?: JQuery.Duration | string | ((this: TElement) => void) | JQuery.EffectsOptions<TElement>): this;
+    slideToggle(duration_easing_complete_options?: JQuery.Duration | string | ((this: TElement, node: TElement) => void) | JQuery.EffectsOptions<TElement>): this;
     /**
      * Hide the matched elements with a sliding motion.
      * @param duration A string or number determining how long the animation will run.
@@ -11073,7 +11073,7 @@ $( "button" ).click(function() {
      * @see \`{@link https://api.jquery.com/slideUp/ }\`
      * @since 1.4.3
      */
-    slideUp(duration: JQuery.Duration, easing: string, complete?: (this: TElement) => void): this;
+    slideUp(duration: JQuery.Duration, easing: string, complete?: (this: TElement, node: TElement) => void): this;
     /**
      * Hide the matched elements with a sliding motion.
      * @param duration_easing _&#x40;param_ `duration_easing`
@@ -11129,7 +11129,7 @@ $( "button" ).click(function() {
 </html>
 ```
      */
-    slideUp(duration_easing: JQuery.Duration | string, complete: (this: TElement) => void): this;
+    slideUp(duration_easing: JQuery.Duration | string, complete: (this: TElement, node: TElement) => void): this;
     /**
      * Hide the matched elements with a sliding motion.
      * @param duration_easing_complete_options _&#x40;param_ `duration_easing_complete_options`
@@ -11182,7 +11182,7 @@ $( document.body ).click(function() {
 </html>
 ```
      */
-    slideUp(duration_easing_complete_options?: JQuery.Duration | string | ((this: TElement) => void) | JQuery.EffectsOptions<TElement>): this;
+    slideUp(duration_easing_complete_options?: JQuery.Duration | string | ((this: TElement, node: TElement) => void) | JQuery.EffectsOptions<TElement>): this;
     /**
      * Stop the currently-running animation on the matched elements.
      * @param queue The name of the queue in which to stop animations.
@@ -11404,7 +11404,7 @@ $( "p" ).text( "<b>Some</b> new text." );
 </html>
 ```
      */
-    text(text_function: string | number | boolean | ((this: TElement, index: number, text: string) => string | number | boolean)): this;
+    text(text_function: string | number | boolean | ((this: TElement, text: string, node: TElement, index: number) => string | number | boolean)): this;
     /**
      * Get the combined text contents of each element in the set of matched elements, including their descendants.
      * @see \`{@link https://api.jquery.com/text/ }\`
@@ -11492,7 +11492,7 @@ disp( $( "div" ).toArray().reverse() );
      * @see \`{@link https://api.jquery.com/toggle/ }\`
      * @since 1.4.3
      */
-    toggle(duration: JQuery.Duration, easing: string, complete?: (this: TElement) => void): this;
+    toggle(duration: JQuery.Duration, easing: string, complete?: (this: TElement, node: TElement) => void): this;
     /**
      * Display or hide the matched elements.
      * @param duration A string or number determining how long the animation will run.
@@ -11500,7 +11500,7 @@ disp( $( "div" ).toArray().reverse() );
      * @see \`{@link https://api.jquery.com/toggle/ }\`
      * @since 1.0
      */
-    toggle(duration: JQuery.Duration, complete: (this: TElement) => void): this;
+    toggle(duration: JQuery.Duration, complete: (this: TElement, node: TElement) => void): this;
     /**
      * Display or hide the matched elements.
      * @param duration_complete_options_display _&#x40;param_ `duration_complete_options_display`
@@ -11593,7 +11593,7 @@ $( "button" ).click(function() {
 </html>
 ```
      */
-    toggle(duration_complete_options_display?: JQuery.Duration | ((this: TElement) => void) | JQuery.EffectsOptions<TElement> | boolean): this;
+    toggle(duration_complete_options_display?: JQuery.Duration | ((this: TElement, node: TElement) => void) | JQuery.EffectsOptions<TElement> | boolean): this;
     /**
      * Add or remove one or more classes from each element in the set of matched elements, depending on either the class's presence or the value of the state argument.
      * @param className_function _&#x40;param_ `className_function`
@@ -11765,6 +11765,7 @@ $( "a" ).on( "click", function( event ) {
 </html>
 ```
      */
+    // @TODO: Fix this
     toggleClass<TState extends boolean>(className_function: JQuery.TypeOrArray<string> | ((this: TElement, index: number, className: string, state: TState) => string),
                                         state?: TState): this;
     /**
@@ -12302,7 +12303,7 @@ $( "input").val([ "check1", "check2", "radio1" ]);
 </html>
 ```
      */
-    val(value_function: string | number | string[] | ((this: TElement, index: number, value: string) => string)): this;
+    val(value_function: string | number | string[] | ((this: TElement, value: string, node: TElement, index: number) => string)): this;
     /**
      * Get the current value of the first element in the set of matched elements.
      * @see \`{@link https://api.jquery.com/val/ }\`
@@ -12445,7 +12446,7 @@ $( "div" ).one( "click", function() {
 </html>
 ```
      */
-    width(value_function: string | number | ((this: TElement, index: number, value: number) => string | number)): this;
+    width(value_function: string | number | ((this: TElement, value: number, node: TElement, index: number) => string | number)): this;
     /**
      * Get the current computed width for the first element in the set of matched elements.
      * @see \`{@link https://api.jquery.com/width/ }\`
@@ -12657,7 +12658,7 @@ $( "p" ).wrap( $( ".doublediv" ) );
 </html>
 ```
      */
-    wrap(wrappingElement_function: JQuery.Selector | JQuery.htmlString | Element | JQuery | ((this: TElement, index: number) => string | JQuery)): this;
+    wrap(wrappingElement_function: JQuery.Selector | JQuery.htmlString | Element | JQuery | ((this: TElement, node: TElement, index: number) => string | JQuery)): this;
     /**
      * Wrap an HTML structure around all elements in the set of matched elements.
      * @param wrappingElement_function _&#x40;param_ `wrappingElement_function`
@@ -12808,7 +12809,7 @@ $( "p" ).wrapAll( $( ".doublediv" ) );
 </html>
 ```
      */
-    wrapAll(wrappingElement_function: JQuery.Selector | JQuery.htmlString | Element | JQuery | ((this: TElement) => string | JQuery)): this;
+    wrapAll(wrappingElement_function: JQuery.Selector | JQuery.htmlString | Element | JQuery | ((this: TElement, node: TElement) => string | JQuery)): this;
     /**
      * Wrap an HTML structure around the content of each element in the set of matched elements.
      * @param wrappingElement_function _&#x40;param_ `wrappingElement_function`
@@ -12938,7 +12939,7 @@ $( "p" ).wrapInner( $( "<span class='red'></span>" ) );
 </html>
 ```
      */
-    wrapInner(wrappingElement_function: JQuery.Selector | JQuery.htmlString | Element | JQuery | ((this: TElement, index: number) => string | JQuery | Element)): this;
+    wrapInner(wrappingElement_function: JQuery.Selector | JQuery.htmlString | Element | JQuery | ((this: TElement, node: TElement, index: number) => string | JQuery | Element)): this;
 
     [n: number]: TElement;
 }

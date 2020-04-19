@@ -7,7 +7,8 @@
   "author": "proteriax <8125011+proteriax@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "postinstall": "patch-package && cp node_modules/jquery/dist/jquery.js ./ && cp -r node_modules/@types/jquery ./types"
+    "update": "patch-package jquery && patch-package @types/jquery",
+    "postinstall": "patch-package && rm -rf types && cp node_modules/jquery/dist/jquery.js ./ && cp -r node_modules/@types/jquery ./types"
   },
   "devDependencies": {
     "@types/jquery": "^3.3.35",
